@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Minhas Tarefas</h1>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <h2 id="form-title">Adicionar Nova Tarefa</h2>
+                <div id="feedback-message"></div>
+                <form id="task-form">
+                    <input type="hidden" id="task-id">
+                    <div class="form-group">
+                        <label for="task-name">Nome da Tarefa</label>
+                        <input type="text" id="task-name" placeholder="Ex: Estudar JavaScript" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Descrição</label>
+                        <textarea id="task-description" rows="3" placeholder="Ex: Revisar os conceitos de DOM e LocalStorage"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-due-date">Data de Vencimento</label>
+                        <input type="date" id="task-due-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-status">Status</label>
+                        <select id="task-status">
+                            <option value="Pendente">Pendente</option>
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Concluída">Concluída</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">Salvar Tarefa</button>
+                    <button type="button" id="btn-cancel" class="btn-cancel hidden">Cancelar Edição</button>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <h2>Lista de Tarefas</h2>
+
+                <div class="controls-container">
+                    <div class="search-container">
+                        <label for="search-task">Buscar Tarefa:</label>
+                        <input type="text" id="search-task" placeholder="Digite o nome ou descrição...">
+                    </div>
+                    <div class="filter-container">
+                        <label for="filter-status">Filtrar por Status:</label>
+                        <select id="filter-status">
+                            <option value="Todos">Todos</option>
+                            <option value="Pendente">Pendente</option>
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Concluída">Concluída</option>
+                        </select>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="btn-export-json">Exportar para JSON</button>
+                        <button id="btn-print">Imprimir Lista</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-sort="name" class="sortable">Nome <span></span></th>
+                            <th>Descrição</th>
+                            <th data-sort="dueDate" class="sortable">Vencimento <span></span></th>
+                            <th data-sort="status" class="sortable">Status <span></span></th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="task-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
